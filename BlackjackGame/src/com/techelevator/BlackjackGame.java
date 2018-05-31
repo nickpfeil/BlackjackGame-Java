@@ -15,6 +15,8 @@ public class BlackjackGame {
 	//System.out.println(acardNumber);
 	//System.out.println(deckValueArray[acardNumber]);
 	//System.out.println(deckCardArray[acardNumber]);
+	
+	// filling both hands and calculating hand values
 	int i = 0;
 	int dealerCount = 0;
 	int playerCount = 0;
@@ -23,9 +25,10 @@ public class BlackjackGame {
 	String playerCard1 = "";
 	String playerCard2 = "";
 	for (i = 0; i < 4; i++) {
-		double random1To52 = Math.random() * 52;
-		int cardNumber = (int) random1To52;
-		if (i % 2 == 0) {
+		double random1To52 = Math.random() * 52;	// create random integer 1 to 52
+		int cardNumber = (int) random1To52;		// set card number equal to random integer 1 to 52
+		
+		if (i % 2 == 0) { 						// populate players hand and value
 			playerCount = playerCount + deckValueArray[cardNumber];
 			if (playerCard1.length() > 1) {
 				playerCard2 = deckCardArray[cardNumber];
@@ -34,7 +37,7 @@ public class BlackjackGame {
 				playerCard1 = deckCardArray[cardNumber];
 			}
 		}
-		else {
+		else {									// populate dealers hand and value
 			dealerCount = dealerCount + deckValueArray[cardNumber];
 			if (dealerCard1.length() > 1) {
 				dealerCard2 = deckCardArray[cardNumber];
@@ -43,11 +46,18 @@ public class BlackjackGame {
 				dealerCard1 = deckCardArray[cardNumber];
 			}
 		}
+	
 	}
+	
+	// begin game
+	// print out player and dealer hands
 	System.out.println("Your Hand: " + playerCard1 + " " + playerCard2 + " for a score of " + playerCount);
 	System.out.println("Dealer Hand: " + dealerCard1 + " " + dealerCard2 + " for a score of " + dealerCount);
+	
+	// take user input Hit or Stand
 	System.out.println("Hit or Stand?");
 	String action = input.nextLine();
+	
 	String stand = "Stand";
 	String hit = "Hit";
 	if (action.equals(stand)) {
